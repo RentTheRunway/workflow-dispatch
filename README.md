@@ -1,3 +1,5 @@
+_This has been forked from aurelien-baudet/workflow-dispatch for the bump to Node 16 and $GITHUB_OUTPUT, as well as potential future fixes/features._
+
 # GitHub Action for Dispatching Workflows
 
 This action triggers another GitHub Actions workflow, using the `workflow_dispatch` event.  
@@ -10,8 +12,6 @@ For details of the `workflow_dispatch` even see [this blog post introducing this
 *Note 1.* The GitHub UI will report flows triggered by this action as "manually triggered" even though they have been run programmatically via another workflow and the API
 
 *Note 2.* If you want to reference the target workflow by ID, you will need to list them with the following REST API call `curl https://api.github.com/repos/{{owner}}/{{repo}}/actions/workflows -H "Authorization: token {{pat-token}}"`
-
-_This action is a fork of `benc-uk/workflow-dispatch` to add support for waiting for workflow completion._
 
 ## Inputs
 ### `workflow`
@@ -66,7 +66,7 @@ Only available if `wait-for-completion` is `true`
 ## Example usage
 ```yaml
 - name: Invoke workflow without inputs. Wait for result
-  uses: aurelien-baudet/workflow-dispatch@v2
+  uses: RentTheRunway/workflow-dispatch@v3
   with:
     workflow: My Workflow
     token: ${{ secrets.PERSONAL_TOKEN }}
@@ -74,7 +74,7 @@ Only available if `wait-for-completion` is `true`
 
 ```yaml
 - name: Invoke workflow without inputs. Don't wait for result
-  uses: aurelien-baudet/workflow-dispatch@v2
+  uses: RentTheRunway/workflow-dispatch@v3
   with:
     workflow: My Workflow
     token: ${{ secrets.PERSONAL_TOKEN }}
@@ -83,7 +83,7 @@ Only available if `wait-for-completion` is `true`
 
 ```yaml
 - name: Invoke workflow with inputs
-  uses: aurelien-baudet/workflow-dispatch@v2
+  uses: RentTheRunway/workflow-dispatch@v3
   with:
     workflow: Another Workflow
     token: ${{ secrets.PERSONAL_TOKEN }}
@@ -92,7 +92,7 @@ Only available if `wait-for-completion` is `true`
 
 ```yaml
 - name: Invoke workflow in another repo with inputs
-  uses: aurelien-baudet/workflow-dispatch@v2
+  uses: RentTheRunway/workflow-dispatch@v3
   with:
     workflow: Some Workflow
     repo: benc-uk/example
@@ -103,7 +103,7 @@ Only available if `wait-for-completion` is `true`
 ```yaml
 - name: Invoke workflow and handle result
   id: trigger-step
-  uses: aurelien-baudet/workflow-dispatch@v2
+  uses: RentTheRunway/workflow-dispatch@v3
   with:
     workflow: Another Workflow
     token: ${{ secrets.PERSONAL_TOKEN }}
